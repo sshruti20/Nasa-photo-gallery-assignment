@@ -66,6 +66,24 @@ class ViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        //Handling invalid date
+        //If invalid date is entered then by default today's date is used
+        
+        let minDateString = "1995-06-16"
+        let minDate = dateFormatter.date(from: minDateString)
+        let currentDate = Date()
+        
+        if selectedDate < minDate! || selectedDate > currentDate {
+            self.showErrorAlert(alertMsg: "Invalid date! resetting to today")
+            selectedDate = currentDate
+            
+            DispatchQueue.main.async {
+                self.datePicker.date = selectedDate
+            }
+        }
+        
+        //Now doing rest processing
         let dateString = dateFormatter.string(from: selectedDate)
         
         return dateString
@@ -134,6 +152,7 @@ class ViewController: UIViewController {
         //self.isScrollViewHidden = !isScrollViewHidden
         
         //getDataFromNasaApi()
+        getSelectedDate()
         fillDataFromSampleResponse()
     }
     
