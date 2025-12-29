@@ -94,7 +94,9 @@ class ViewController: UIViewController {
     func getDataFromNasaApi() {
         let selectedDate = getSelectedDate()
         
-        let urlString = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=" + selectedDate
+        //let urlString = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=" + selectedDate
+        let urlString = "https://api.nasa.gov/planetary/apod?api_key=TaAfjVRNDUt3di8f04YfsbrCgDIngQYGE40CghcO&date=" + selectedDate
+        
         
         let url = URL(string: urlString)!
         
@@ -137,7 +139,6 @@ class ViewController: UIViewController {
     
     func fillDataFromSampleResponse() {
        
-            
             DispatchQueue.main.async {
                 self.titleLabel.text = "M1: The Crab Nebula"
                 self.dateLabel.text = "2025-12-29"
@@ -151,11 +152,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loadImageButtonClicked(_ sender: Any) {
-        //self.isScrollViewHidden = !isScrollViewHidden
+        //self.isScrollViewHidden = false
         
-        //getDataFromNasaApi()
-        getSelectedDate()
-        fillDataFromSampleResponse()
+        getDataFromNasaApi()
+        //getSelectedDate()
+        //fillDataFromSampleResponse()
     }
     
     func showErrorAlert (alertMsg: String) {
