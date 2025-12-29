@@ -149,6 +149,9 @@
                                 <rect key="frame" x="16" y="753" width="157" height="41"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonClicked:" destination="mDc-jh-eAy" eventType="touchUpInside" id="b9F-aH-eOA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="44d-mG-C9q"/>
