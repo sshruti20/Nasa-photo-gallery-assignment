@@ -8,7 +8,6 @@
 import UIKit
 import Foundation
 
-
 class ViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -18,6 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBOutlet weak var spinnerContainer: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var imgUrlString = ""
 
@@ -38,6 +40,7 @@ class ViewController: UIViewController {
         if isScrollViewHidden {
             DispatchQueue.main.async {
                 self.scrollView.isHidden = self.isScrollViewHidden
+                self.showSpinner()
             }
         }
         
@@ -126,7 +129,9 @@ class ViewController: UIViewController {
                 }
                 self.imgUrlString = jsonObject?["url"] as? String ?? ""
                 
-                self.imgView.load(url: (URL(string: self.imgUrlString) ?? URL(string: ""))!)
+                //self.imgView.load(url: (URL(string: self.imgUrlString) ?? URL(string: ""))!)
+                self.loadImage(with: (URL(string: self.imgUrlString) ?? URL(string: ""))! )
+                
             } catch {
                 print("JSON decoding error: \(error)")
             }
@@ -137,7 +142,8 @@ class ViewController: UIViewController {
         
     }
     
-    func fillDataFromSampleResponse() {
+    //This function is just for testing purpose, since repeted api calls exceeds rate limit
+    private func fillDataFromSampleResponse() {
        
             DispatchQueue.main.async {
                 self.titleLabel.text = "M1: The Crab Nebula"
@@ -148,8 +154,9 @@ class ViewController: UIViewController {
             }
         self.imgUrlString = "https://apod.nasa.gov/apod/image/2512/Crab_Chen_960.jpg"
         
-        self.imgView.load(url: (URL(string: self.imgUrlString) ?? URL(string: ""))!)
-        
+        //self.imgView.load(url: (URL(string: self.imgUrlString) ?? URL(string: ""))!)
+        //HERE
+        self.loadImage(with: (URL(string: self.imgUrlString) ?? URL(string: ""))! )
     }
     
     @IBAction func loadImageButtonClicked(_ sender: Any) {
@@ -180,22 +187,33 @@ class ViewController: UIViewController {
         self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+300)
     }
 
+    private func showSpinner() {
+      activityIndicator.startAnimating()
+      spinnerContainer.isHidden = false
+    }
+
+    private func hideSpinner() {
+      activityIndicator.stopAnimating()
+      spinnerContainer.isHidden = true
+    }
     
 }
 
-extension UIImageView {
-    func load(url: URL) {
-        // Perform the network request on a background thread
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    // Update the UI (set the image) on the main thread
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
+extension ViewController {
+    private func loadImage(with url: URL) {
+    let session = URLSession(configuration: .ephemeral)
+        let dataTask = session.dataTask(with: url) { [weak self] data, _, _ in
+      guard let self = self else {
+        return
+      }
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.imgView.image = UIImage(data: data)
+                    self.hideSpinner()
                 }
             }
         }
+        dataTask.resume()
     }
 }
 

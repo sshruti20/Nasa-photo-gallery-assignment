@@ -58,12 +58,29 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuO-NQ-HxJ">
+                                                <rect key="frame" x="130.66666666666666" y="248.66666666666669" width="100" height="100"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="rZe-ad-GUy">
+                                                        <rect key="frame" x="13" y="17" width="74" height="60"/>
+                                                    </activityIndicatorView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="3fq-cp-IJt"/>
+                                                    <constraint firstItem="rZe-ad-GUy" firstAttribute="centerY" secondItem="WuO-NQ-HxJ" secondAttribute="centerY" id="AaT-Zx-QYS"/>
+                                                    <constraint firstAttribute="height" constant="100" id="NVH-P0-rmR"/>
+                                                    <constraint firstItem="rZe-ad-GUy" firstAttribute="centerX" secondItem="WuO-NQ-HxJ" secondAttribute="centerX" id="wxw-HF-vtP"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="okw-ag-xgE" firstAttribute="leading" secondItem="o0G-hw-CrE" secondAttribute="leading" id="4XP-Ms-JTz"/>
                                             <constraint firstItem="gNc-nL-Kjd" firstAttribute="centerX" secondItem="o0G-hw-CrE" secondAttribute="centerX" id="4dn-ZW-MqF"/>
                                             <constraint firstItem="okw-ag-xgE" firstAttribute="top" secondItem="o0G-hw-CrE" secondAttribute="top" constant="17" id="C58-wK-6JD"/>
+                                            <constraint firstItem="WuO-NQ-HxJ" firstAttribute="centerY" secondItem="gNc-nL-Kjd" secondAttribute="centerY" id="Cc1-2h-IKC"/>
+                                            <constraint firstItem="WuO-NQ-HxJ" firstAttribute="centerX" secondItem="gNc-nL-Kjd" secondAttribute="centerX" id="DL9-Ka-bbz"/>
                                             <constraint firstItem="okw-ag-xgE" firstAttribute="leading" secondItem="gNc-nL-Kjd" secondAttribute="leading" id="DRM-Ij-ttr"/>
                                             <constraint firstAttribute="bottom" secondItem="BDk-U3-6GI" secondAttribute="bottom" constant="21.000000000000114" id="DpR-O1-g6D"/>
                                             <constraint firstItem="2b2-mQ-frD" firstAttribute="top" secondItem="gNc-nL-Kjd" secondAttribute="bottom" constant="20.333333333333258" id="NSb-Ah-H5y"/>
@@ -120,12 +137,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="pyM-uy-7ac"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="rZe-ad-GUy" id="ok8-25-UBX"/>
                         <outlet property="copyrightLabel" destination="BDk-U3-6GI" id="CMo-Sy-vHt"/>
                         <outlet property="dateLabel" destination="wgU-UH-bz0" id="6fC-2C-Owx"/>
                         <outlet property="datePicker" destination="nls-Ul-e8T" id="CaR-Vp-vFw"/>
                         <outlet property="descriptionLabel" destination="2b2-mQ-frD" id="JVc-39-Oc8"/>
                         <outlet property="imgView" destination="gNc-nL-Kjd" id="zeD-87-Txr"/>
                         <outlet property="scrollView" destination="DrR-lm-7L0" id="eeu-RF-V7b"/>
+                        <outlet property="spinnerContainer" destination="WuO-NQ-HxJ" id="2tn-BG-N4O"/>
                         <outlet property="titleLabel" destination="okw-ag-xgE" id="sr9-KK-8k9"/>
                         <segue destination="mDc-jh-eAy" kind="show" identifier="toImageDetailsVC" id="ifb-Fi-sEp"/>
                     </connections>
