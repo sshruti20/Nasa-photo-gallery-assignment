@@ -15,15 +15,22 @@ class ImageDetailsViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     var imageUrlString = ""
+    var img = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         detailImageView.enableZoom()
         
+        DispatchQueue.main.async {
+            self.detailImageView.image = self.img
+        }
+        
+        /*
         if imageUrlString != "" {
             self.detailImageView.load(url: URL(string: imageUrlString)!)
         }
+         */
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {

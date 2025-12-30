@@ -171,6 +171,7 @@ class ViewController: UIViewController {
                 if let destinationVC = segue.destination as? ImageDetailsViewController {
                     // Pass the data
                     destinationVC.imageUrlString = self.imgUrlString
+                    destinationVC.img = self.imgView.image ?? UIImage()
                 }
             }
     }
