@@ -26,11 +26,6 @@ class ImageDetailsViewController: UIViewController {
             self.detailImageView.image = self.img
         }
         
-        /*
-        if imageUrlString != "" {
-            self.detailImageView.load(url: URL(string: imageUrlString)!)
-        }
-         */
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {
@@ -38,6 +33,27 @@ class ImageDetailsViewController: UIViewController {
             UIImageWriteToSavedPhotosAlbum(img, self, #selector(saveCompleted), nil)
         }
     }
+    
+    @IBAction func shareButtonClicked(_ sender: Any) {
+        // Ensure the image you want to share is available
+        guard let imageToShare = self.detailImageView.image else {
+            print("No image found to share")
+            return
+        }
+
+        // You can also include text to share alongside the image
+        let textToShare = "Check out this awesome image from my app!"
+
+        // Create an array of items to share. UIActivityViewController handles multiple types.
+        let activityItems: [Any] = [imageToShare, textToShare].compactMap { $0 }
+
+        // Initialize the UIActivityViewController
+        let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+
+    
     
     @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
             if let error = error {

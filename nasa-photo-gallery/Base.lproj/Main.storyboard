@@ -172,17 +172,30 @@
                                     <action selector="saveButtonClicked:" destination="mDc-jh-eAy" eventType="touchUpInside" id="b9F-aH-eOA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXG-Xe-aWt">
+                                <rect key="frame" x="236" y="753" width="137" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="fGF-N2-84o"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Share"/>
+                                <connections>
+                                    <action selector="shareButtonClicked:" destination="mDc-jh-eAy" eventType="touchUpInside" id="JbG-6g-6YL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="44d-mG-C9q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="B9D-3d-FEk" firstAttribute="leading" secondItem="44d-mG-C9q" secondAttribute="leading" constant="20" id="PmZ-Na-Tcj"/>
-                            <constraint firstItem="44d-mG-C9q" firstAttribute="trailing" secondItem="wjb-cA-Gz5" secondAttribute="trailing" constant="220" id="QLw-Q7-fcQ"/>
-                            <constraint firstItem="B9D-3d-FEk" firstAttribute="top" secondItem="44d-mG-C9q" secondAttribute="top" constant="20" id="UzG-yU-hMT"/>
-                            <constraint firstItem="44d-mG-C9q" firstAttribute="bottom" secondItem="wjb-cA-Gz5" secondAttribute="bottom" constant="24" id="Z05-0m-jo1"/>
-                            <constraint firstItem="wjb-cA-Gz5" firstAttribute="leading" secondItem="lIw-X4-gWn" secondAttribute="leadingMargin" id="rZv-jU-VIv"/>
-                            <constraint firstItem="wjb-cA-Gz5" firstAttribute="top" secondItem="B9D-3d-FEk" secondAttribute="bottom" constant="21" id="vTf-Bd-QGb"/>
-                            <constraint firstItem="B9D-3d-FEk" firstAttribute="centerX" secondItem="lIw-X4-gWn" secondAttribute="centerX" id="yIQ-QG-bV3"/>
+                            <constraint firstItem="B9D-3d-FEk" firstAttribute="leading" secondItem="44d-mG-C9q" secondAttribute="leading" constant="20" id="0FH-fo-7Km"/>
+                            <constraint firstItem="44d-mG-C9q" firstAttribute="bottom" secondItem="wjb-cA-Gz5" secondAttribute="bottom" constant="24" id="0V7-ry-SD5"/>
+                            <constraint firstItem="B9D-3d-FEk" firstAttribute="top" secondItem="44d-mG-C9q" secondAttribute="top" constant="20" id="5n1-cQ-KVa"/>
+                            <constraint firstItem="B9D-3d-FEk" firstAttribute="centerX" secondItem="lIw-X4-gWn" secondAttribute="centerX" id="Bu1-7X-PtE"/>
+                            <constraint firstItem="wjb-cA-Gz5" firstAttribute="baseline" secondItem="SXG-Xe-aWt" secondAttribute="baseline" id="d3v-UV-wAs"/>
+                            <constraint firstItem="B9D-3d-FEk" firstAttribute="trailing" secondItem="SXG-Xe-aWt" secondAttribute="trailing" id="fxe-q9-sQB"/>
+                            <constraint firstItem="SXG-Xe-aWt" firstAttribute="leading" secondItem="wjb-cA-Gz5" secondAttribute="trailing" constant="63" id="jtk-JF-upy"/>
+                            <constraint firstItem="wjb-cA-Gz5" firstAttribute="top" secondItem="B9D-3d-FEk" secondAttribute="bottom" constant="21" id="oVr-lq-PXf"/>
+                            <constraint firstItem="wjb-cA-Gz5" firstAttribute="leading" secondItem="lIw-X4-gWn" secondAttribute="leadingMargin" id="sdk-qX-V7y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3gP-G2-yr7"/>

@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
     @IBOutlet weak var spinnerContainer: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -97,8 +96,7 @@ class ViewController: UIViewController {
     func getDataFromNasaApi() {
         let selectedDate = getSelectedDate()
         
-        //let urlString = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=" + selectedDate
-        let urlString = "https://api.nasa.gov/planetary/apod?api_key=TaAfjVRNDUt3di8f04YfsbrCgDIngQYGE40CghcO&date=" + selectedDate
+        let urlString = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=" + selectedDate
         
         
         let url = URL(string: urlString)!
@@ -129,7 +127,6 @@ class ViewController: UIViewController {
                 }
                 self.imgUrlString = jsonObject?["url"] as? String ?? ""
                 
-                //self.imgView.load(url: (URL(string: self.imgUrlString) ?? URL(string: ""))!)
                 self.loadImage(with: (URL(string: self.imgUrlString) ?? URL(string: ""))! )
                 
             } catch {
@@ -162,9 +159,9 @@ class ViewController: UIViewController {
     @IBAction func loadImageButtonClicked(_ sender: Any) {
         self.isScrollViewHidden = false
         
-        //getDataFromNasaApi()
-        getSelectedDate()
-        fillDataFromSampleResponse()
+        getDataFromNasaApi()
+        //getSelectedDate()
+        //fillDataFromSampleResponse()
     }
     
     func showErrorAlert (alertMsg: String) {
